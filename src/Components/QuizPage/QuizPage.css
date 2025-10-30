@@ -1,0 +1,131 @@
+.quiz-page {
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle, #000 70%, #111 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.quiz-box {
+  border: 3px solid #00ffff;
+  box-shadow: 4px 4px 0 #ff00ff;
+  padding: 40px;
+  border-radius: 16px;
+  width: 500px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.question {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-btn {
+  font-family: "Pixelify Sans", sans-serif;
+  background: transparent;
+  color: white;
+  border: 2px solid #00ffff;
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option-btn:hover {
+  background: #ff00ff;
+  color: black;
+  box-shadow: 0 0 15px #00ffff;
+}
+
+.progress {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.score-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.restart-btn {
+  font-family: "Pixelify Sans", sans-serif;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: transparent;
+  color: white;
+  border: 2px solid #ff00ff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.restart-btn:hover {
+  background: #00ffff;
+  color: black;
+  box-shadow: 0 0 15px #ff00ff;
+}
+
+
+.loading-screen {
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle, #000 70%, #111 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #00ffff;
+  text-shadow: 2px 2px 0 #ff00ff;
+  font-size: 2rem;
+}
+
+.loader-text {
+  margin-bottom: 30px;
+  animation: flicker 1.5s infinite;
+}
+
+.loading-bar {
+  width: 300px;
+  height: 20px;
+  border: 3px solid #00ffff;
+  box-shadow: 2px 2px 0 #ff00ff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  animation: loading 2s linear forwards;
+}
+
+@keyframes loading {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
