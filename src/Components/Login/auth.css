@@ -1,0 +1,106 @@
+.auth-root {
+  min-height: 89.5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  background: #0b0f1a;
+  font-family: "Pixelify Sans", sans-serif;
+}
+.auth-box {
+  width: 360px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 22px;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 3px solid #ffffff;
+  box-shadow: 4px 4px 0 #00ffff, 0 0 12px #ff00ff;
+}
+
+.auth-box .field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.auth-box h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  text-align: center;
+  color: #ff00ff;
+  text-shadow: 2px 2px 0 #000, 3px 3px 0 #00ffff, 0 0 10px #ff00ff;
+}
+
+.auth-box label {
+  font-size: 0.8rem;
+  color: #00ffff;
+  letter-spacing: 1px;
+  margin: 0;
+  text-shadow: 1px 1px 0 #000;
+}
+.auth-box input,
+.auth-box textarea,
+.auth-box select {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 1rem;
+  padding: 10px;
+
+  border-radius: 0;
+  border: 3px solid #ffffff;
+  background: #000;
+  color: #fff;
+
+  outline: none;
+  box-shadow: inset 2px 2px 0 #ff00ff;
+  transition: all 0.12s;
+}
+
+.auth-box input:focus,
+.auth-box textarea:focus,
+.auth-box select:focus {
+  border-color: #ff00ff;
+  box-shadow: inset 2px 2px 0 #00ffff, 0 0 10px rgba(255,0,150,0.25);
+}
+
+.auth-box button {
+  margin-top: 6px;
+  padding: 12px 0;
+  background: #000;
+  color: #fff;
+  border: 3px solid #fff;
+  font-size: 1.05rem;
+  font-family: "Pixelify Sans", sans-serif;
+  cursor: pointer;
+  letter-spacing: 2px;
+  box-shadow: 3px 3px 0 #ff00ff, 0 0 10px #00ffff;
+  transition: all 0.06s steps(1, end);
+  width: 100%;
+}
+.auth-box button:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 3px 3px 0 #00ffff, 0 0 10px #ff00ff;
+  transform: translate(-2px, -2px);
+}
+
+.auth-error {
+  background: #320014;
+  color: #ff7aa8;
+  font-size: 0.9rem;
+  border: 3px solid #ff004d;
+  padding: 8px;
+  text-align: center;
+  border-radius: 0;
+  text-shadow: 1px 1px 0 #000;
+  margin-bottom: 0;
+}
+
+.auth-box a { color: #8ecaff; text-decoration: underline; }
+.auth-box p { color: #d4e4ff; font-size: 0.9rem; text-align: center; margin: 0; }

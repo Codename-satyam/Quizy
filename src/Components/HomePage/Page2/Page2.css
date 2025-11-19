@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+.page-2 {
+  position: relative;
+  min-height: 100vh;
+  background: #111; /* Dark background for contrast */
+  color: #fff;
+  font-family: "Pixelify Sans", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.p2 {
+  width: 90%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+/* === Top Section === */
+.start1 h2 {
+  font-size: 2.5rem;
+  color: #fff;
+  text-shadow: 2px 2px 0 #000, 4px 4px 0 #ff00ff;
+  margin-bottom: 20px;
+}
+
+.start1 h2 span {
+  color: #00ffff;
+}
+
+.start1 p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.8;
+  color: #ddd;
+  /* text-shadow: 1px 1px 0 #000, 2px 2px 0 #00ffff; */
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+/* === Boxes Section === */
+.boxes {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.box {
+  background: rgba(0, 0, 0, 0.6);
+  border: 3px solid #fff;
+  box-shadow: 4px 4px 0 #00ffff;
+  padding: 30px 40px;
+  width: 300px;
+  text-align: left;
+  border-radius: 8px;
+  transition: all 0.1s steps(1, end);
+}
+
+.box:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 4px 4px 0 #ff00ff;
+}
+
+.box h3 {
+  color: #ff00ff;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 0 #000, 2px 2px 0 #00ffff;
+}
+
+.box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.box ul li {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #fff;
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* === Buttons Section === */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.button2, .button3 {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 1.2rem;
+  text-decoration: none;
+  background: #000;
+  color: #fff;
+  border: 3px solid #fff;
+  box-shadow: 3px 3px 0 #00ffff;
+  padding: 12px 30px;
+  transition: all 0.05s steps(1, end);
+}
+
+.button2:hover, .button3:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 3px 3px 0 #ff00ff;
+  transform: translate(-2px, -2px);
+}
