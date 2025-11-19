@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+:root{
+  --bg:#071124;
+  --gameboy-shell:#cfd8e3;
+  --accent:#00ffff;
+  --accent-2:#ff00ff;
+  --highlight:#2563eb;
+  --paper:#f8fafc;
+}
+
+.pixelify-sans-font{font-family:"Pixelify Sans", sans-serif;font-optical-sizing: auto}
+
+/* Fullscreen gallery */
+.yt-gallery-root{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  margin:0;
+  padding:36px;
+  box-sizing:border-box;
+  background:radial-gradient(circle at 20% 20%, rgba(255,0,255,0.06), transparent 10%),
+             radial-gradient(circle at 80% 80%, rgba(0,255,255,0.04), transparent 12%),
+             linear-gradient(180deg, #050611 0%, #071124 45%);
+  font-family:"Pixelify Sans",sans-serif;
+  color:var(--paper);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* grid: left big gameboy, right column reserved for spacing/overlap */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:28px;
+  width:100%;
+  max-width:1500px;
+  height:110%;
+  align-items:stretch;
+  margin-left: 70vh;
+}
+
+/* LEFT - make the Game Boy larger and centered */
+.left-gameboy{display:flex;flex-direction:column;align-items:center;justify-content:center}
+
+.gameboy-shell{
+  width:100%;
+  max-width:1100px;
+  height:100%;
+  background:linear-gradient(180deg,#dbe7ef,#b8c8d8);
+  border-radius:16px;
+  padding:28px;
+  padding-right:460px; /* reserve space for the internal list */
+  box-shadow:14px 14px 0 rgba(10,10,10,0.7),-10px -10px 0 rgba(255,255,255,0.12);
+  border:8px solid #9aa6b6;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  position:relative;
+  overflow:visible;
+}
+
+/* decorative gradient behind the gameboy shell */
+.gameboy-shell:before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:120%;
+  height:120%;
+  background:radial-gradient(circle at 30% 30%, rgba(255,0,255,0.06), transparent 8%),
+             radial-gradient(circle at 70% 70%, rgba(0,255,255,0.06), transparent 12%),
+             linear-gradient(45deg, rgba(37,99,235,0.04), transparent 40%);
+  border-radius:20px;
+  z-index:0;
+  pointer-events:none;
+}
+
+/* ensure inner content sits above the decorative background */
+.gameboy-shell *{position:relative;z-index:1}
+
+/* Screen: occupy most vertical space */
+.screen-wrap{
+  width:100%;
+  flex:1 1 auto;
+  background:#021018;
+  border-radius:10px;
+  overflow:hidden;
+  position:relative;
+  margin-bottom:16px;
+  border:8px solid #06262a;
+  box-shadow:inset 0 -8px 18px rgba(0,0,0,0.55);
+}
+.screen-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;filter:contrast(1.04) saturate(0.95)}
+.screen-wrap:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,0.06) 50%, rgba(255,255,255,0.02) 51%);background-size:100% 4px;mix-blend-mode:overlay;pointer-events:none}
+
+/* Controls */
+.controls{width:100%;display:flex;justify-content:space-between;margin-top:10px;padding:8px}
+.buttons{display:flex;align-items:center;gap:20px}
+.dpad{width:78px;height:78px;background:repeating-linear-gradient(45deg,#2b2b2b,#2b2b2b 6px,#1a1a1a 6px,#1a1a1a 12px);border-radius:8px;position:relative;padding:8px}
+.dpad div{width:28px;height:28px;background:#374151;border-radius:4px;margin:5px;box-shadow:0 3px 0 rgba(0,0,0,0.7)}
+.action-buttons{display:flex;flex-direction:column;gap:10px}
+.action-buttons .a,.action-buttons .b{width:48px;height:48px;border-radius:8px;background:linear-gradient(180deg,#ffd28a,#f97316);box-shadow:0 4px 0 rgba(0,0,0,0.45);image-rendering:pixelated}
+.action-buttons .b{background:linear-gradient(180deg,#ffd2ff,#f43f5e)}
+
+/* Title */
+.now-playing{margin-top:14px;text-align:center;color:#0b1220}
+.now-playing .video-title{font-weight:900;margin-bottom:8px;color:var(--accent-2);text-shadow:2px 2px 0 #000,4px 4px 0 var(--accent)}
+.now-playing .video-name{font-size:16px;color:#0b1220}
+
+/* RIGHT LIST: visually inside the gameboy by overlapping it */
+.right-list{
+  position:absolute;
+  top:28px;
+  right:28px;
+  width:380px;
+  height:calc(100% - 56px);
+  background:linear-gradient(180deg,#071124,#091426);
+  border-radius:10px;
+  padding:12px;
+  border:4px solid rgba(255,255,255,0.04);
+  box-shadow:10px 10px 0 rgba(0,0,0,0.6);
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  z-index:2;
+}
+.list-title{font-weight:900;margin-bottom:12px;color:var(--accent-2);text-shadow:1px 1px 0 #000,2px 2px 0 var(--accent)}
+.list-container{flex:1 1 auto;overflow-y:auto;padding-right:6px}
+
+/* thumbnails */
+.thumb-item{display:flex;gap:12px;align-items:center;padding:10px;border-radius:6px;cursor:pointer;border:3px solid transparent;transition:all 120ms steps(1,end)}
+.thumb-item:hover{background:rgba(255,255,255,0.02);transform:translate(-2px,-2px);box-shadow:6px 6px 0 rgba(0,0,0,0.55)}
+.thumb-item.active{background:linear-gradient(180deg,rgba(37,99,235,0.14),rgba(37,99,235,0.06));border-left:6px solid var(--highlight)}
+.thumb-img{width:160px;height:92px;flex:0 0 160px;border-radius:6px;object-fit:cover;image-rendering:pixelated;border:2px solid rgba(0,0,0,0.25)}
+.thumb-meta{display:flex;flex-direction:column}
+.thumb-title{font-size:15px;margin-bottom:6px;color:var(--paper);text-shadow:1px 1px 0 #000}
+.thumb-id{display:none}
+
+/* pixel buttons */
+.list-controls{display:flex;gap:8px;margin-top:12px}
+.pixel-button{display:inline-block;padding:8px 12px;border:3px solid var(--paper);background:#000;color:var(--paper);box-shadow:6px 6px 0 var(--accent-2);cursor:pointer;image-rendering:pixelated;transition:all .05s steps(1,end)}
+.pixel-button:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--accent)}
+
+/* responsiveness */
+@media(max-width:1200px){
+  .gallery-grid{grid-template-columns:1fr 360px}
+  .right-list{margin-left:-360px;width:320px}
+}
+@media(max-width:900px){
+  .gallery-grid{grid-template-columns:1fr}
+  .right-list{position:relative;margin-left:0;width:100%;order:2;margin-top:18px;align-self:stretch}
+  .gameboy-shell{max-width:100%;}
+  .screen-wrap{height:420px}
+  .thumb-img{width:120px;height:68px}
+}
