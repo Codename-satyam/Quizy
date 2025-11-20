@@ -2,7 +2,7 @@
 
 :root{
   --bg:#071124;
-  --gameboy-shell:#cfd8e3;
+  --shell:#cfd8e3;
   --accent:#00ffff;
   --accent-2:#ff00ff;
   --highlight:#2563eb;
@@ -11,8 +11,7 @@
 
 .pixelify-sans-font{font-family:"Pixelify Sans", sans-serif;font-optical-sizing: auto}
 
-/* Fullscreen gallery */
-.yt-gallery-root{
+.yt-root{
   position:fixed;
   inset:0;
   width:100vw;
@@ -30,8 +29,7 @@
   justify-content:center;
 }
 
-/* grid: left big gameboy, right column reserved for spacing/overlap */
-.gallery-grid{
+.yt-grid{
   display:grid;
   grid-template-columns:1fr 420px;
   gap:28px;
@@ -42,17 +40,16 @@
   margin-left: 70vh;
 }
 
-/* LEFT - make the Game Boy larger and centered */
-.left-gameboy{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.player-column{display:flex;flex-direction:column;align-items:center;justify-content:center}
 
-.gameboy-shell{
+.player-card{
   width:100%;
   max-width:1100px;
   height:100%;
   background:linear-gradient(180deg,#dbe7ef,#b8c8d8);
   border-radius:16px;
   padding:28px;
-  padding-right:460px; /* reserve space for the internal list */
+  padding-right:460px;
   box-shadow:14px 14px 0 rgba(10,10,10,0.7),-10px -10px 0 rgba(255,255,255,0.12);
   border:8px solid #9aa6b6;
   display:flex;
@@ -62,8 +59,7 @@
   overflow:visible;
 }
 
-/* decorative gradient behind the gameboy shell */
-.gameboy-shell:before{
+.player-card:before{
   content:"";
   position:absolute;
   left:50%;
@@ -79,11 +75,9 @@
   pointer-events:none;
 }
 
-/* ensure inner content sits above the decorative background */
-.gameboy-shell *{position:relative;z-index:1}
+.player-card *{position:relative;z-index:1}
 
-/* Screen: occupy most vertical space */
-.screen-wrap{
+.video-frame{
   width:100%;
   flex:1 1 auto;
   background:#021018;
@@ -94,25 +88,14 @@
   border:8px solid #06262a;
   box-shadow:inset 0 -8px 18px rgba(0,0,0,0.55);
 }
-.screen-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;filter:contrast(1.04) saturate(0.95)}
-.screen-wrap:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,0.06) 50%, rgba(255,255,255,0.02) 51%);background-size:100% 4px;mix-blend-mode:overlay;pointer-events:none}
+.video-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;filter:contrast(1.04) saturate(0.95)}
+.video-frame:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,0.06) 50%, rgba(255,255,255,0.02) 51%);background-size:100% 4px;mix-blend-mode:overlay;pointer-events:none}
 
-/* Controls */
-.controls{width:100%;display:flex;justify-content:space-between;margin-top:10px;padding:8px}
-.buttons{display:flex;align-items:center;gap:20px}
-.dpad{width:78px;height:78px;background:repeating-linear-gradient(45deg,#2b2b2b,#2b2b2b 6px,#1a1a1a 6px,#1a1a1a 12px);border-radius:8px;position:relative;padding:8px}
-.dpad div{width:28px;height:28px;background:#374151;border-radius:4px;margin:5px;box-shadow:0 3px 0 rgba(0,0,0,0.7)}
-.action-buttons{display:flex;flex-direction:column;gap:10px}
-.action-buttons .a,.action-buttons .b{width:48px;height:48px;border-radius:8px;background:linear-gradient(180deg,#ffd28a,#f97316);box-shadow:0 4px 0 rgba(0,0,0,0.45);image-rendering:pixelated}
-.action-buttons .b{background:linear-gradient(180deg,#ffd2ff,#f43f5e)}
+.current-info{margin-top:14px;text-align:center;color:#0b1220}
+.current-info .now-label{font-weight:900;margin-bottom:8px;color:var(--accent-2);text-shadow:2px 2px 0 #000,4px 4px 0 var(--accent)}
+.current-info .now-title{font-size:16px;color:#0b1220}
 
-/* Title */
-.now-playing{margin-top:14px;text-align:center;color:#0b1220}
-.now-playing .video-title{font-weight:900;margin-bottom:8px;color:var(--accent-2);text-shadow:2px 2px 0 #000,4px 4px 0 var(--accent)}
-.now-playing .video-name{font-size:16px;color:#0b1220}
-
-/* RIGHT LIST: visually inside the gameboy by overlapping it */
-.right-list{
+.sidebar-list{
   position:absolute;
   top:28px;
   right:28px;
@@ -128,32 +111,28 @@
   flex-direction:column;
   z-index:2;
 }
-.list-title{font-weight:900;margin-bottom:12px;color:var(--accent-2);text-shadow:1px 1px 0 #000,2px 2px 0 var(--accent)}
-.list-container{flex:1 1 auto;overflow-y:auto;padding-right:6px}
+.sidebar-header{font-weight:900;margin-bottom:12px;color:var(--accent-2);text-shadow:1px 1px 0 #000,2px 2px 0 var(--accent)}
+.sidebar-scroll{flex:1 1 auto;overflow-y:auto;padding-right:6px}
 
-/* thumbnails */
-.thumb-item{display:flex;gap:12px;align-items:center;padding:10px;border-radius:6px;cursor:pointer;border:3px solid transparent;transition:all 120ms steps(1,end)}
-.thumb-item:hover{background:rgba(255,255,255,0.02);transform:translate(-2px,-2px);box-shadow:6px 6px 0 rgba(0,0,0,0.55)}
-.thumb-item.active{background:linear-gradient(180deg,rgba(37,99,235,0.14),rgba(37,99,235,0.06));border-left:6px solid var(--highlight)}
+.list-thumb{display:flex;gap:12px;align-items:center;padding:10px;border-radius:6px;cursor:pointer;border:3px solid transparent;transition:all 120ms steps(1,end)}
+.list-thumb:hover{background:rgba(255,255,255,0.02);transform:translate(-2px,-2px);box-shadow:6px 6px 0 rgba(0,0,0,0.55)}
+.list-thumb.selected{background:linear-gradient(180deg,rgba(37,99,235,0.14),rgba(37,99,235,0.06));border-left:6px solid var(--highlight)}
 .thumb-img{width:160px;height:92px;flex:0 0 160px;border-radius:6px;object-fit:cover;image-rendering:pixelated;border:2px solid rgba(0,0,0,0.25)}
 .thumb-meta{display:flex;flex-direction:column}
 .thumb-title{font-size:15px;margin-bottom:6px;color:var(--paper);text-shadow:1px 1px 0 #000}
-.thumb-id{display:none}
 
-/* pixel buttons */
-.list-controls{display:flex;gap:8px;margin-top:12px}
-.pixel-button{display:inline-block;padding:8px 12px;border:3px solid var(--paper);background:#000;color:var(--paper);box-shadow:6px 6px 0 var(--accent-2);cursor:pointer;image-rendering:pixelated;transition:all .05s steps(1,end)}
-.pixel-button:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--accent)}
+.sidebar-controls{display:flex;gap:8px;margin-top:12px}
+.pixel-btn{display:inline-block;padding:8px 12px;border:3px solid var(--paper);background:#000;color:var(--paper);box-shadow:6px 6px 0 var(--accent-2);cursor:pointer;image-rendering:pixelated;transition:all .05s steps(1,end)}
+.pixel-btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--accent)}
 
-/* responsiveness */
 @media(max-width:1200px){
-  .gallery-grid{grid-template-columns:1fr 360px}
-  .right-list{margin-left:-360px;width:320px}
+  .yt-grid{grid-template-columns:1fr 360px}
+  .sidebar-list{margin-left:-360px;width:320px}
 }
 @media(max-width:900px){
-  .gallery-grid{grid-template-columns:1fr}
-  .right-list{position:relative;margin-left:0;width:100%;order:2;margin-top:18px;align-self:stretch}
-  .gameboy-shell{max-width:100%;}
-  .screen-wrap{height:420px}
+  .yt-grid{grid-template-columns:1fr}
+  .sidebar-list{position:relative;margin-left:0;width:100%;order:2;margin-top:18px;align-self:stretch}
+  .player-card{max-width:100%;}
+  .video-frame{height:420px}
   .thumb-img{width:120px;height:68px}
 }

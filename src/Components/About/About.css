@@ -28,7 +28,7 @@
 
 /* gameboy body */
 .about-gameboy{
-  width: 420px;
+  width: 600px;
   max-width:92%;
   background: linear-gradient(180deg, var(--gb-body), #e0e2ea 100%);
   border-radius: 18px;
@@ -38,9 +38,6 @@
   transform: translateY(0);
   transition: transform .18s ease;
 }
-
-/* subtle float */
-.about-gameboy:hover{ transform: translateY(-6px); }
 
 /* top bar */
 .about-gb-top{
@@ -91,6 +88,8 @@
   box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 36px rgba(0,240,255,0.02);
   position:relative;
   overflow:auto;
+  font-family: "Press Start 2P", monospace;
+  overflow-y: hidden;
 }
 
 /* screen glow and scanline */

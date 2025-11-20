@@ -15,6 +15,8 @@ import Dashboard from "./Components/Dashboard/Dashboard.jsx";
 import Login from "./Components/Login/Login.jsx";
 import Register from "./Components/Login/Register.jsx";
 import ProtectedRoute from "./Components/Auth/ProtectedRoute.jsx";
+import Games from "./Components/Play/Games/Games.jsx";
+import Notes from "./Components/Play/Notes/Notes.jsx";
 
 function App() {
   return (
@@ -65,7 +67,35 @@ function App() {
               </>
             }
           />
-          <Route path="/videos" element={<Videos />} />
+          <Route
+            path="/videos"
+            element={
+              <ProtectedRoute>
+                <Navbar />
+                <Videos />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/games"
+            element={
+              <>
+                <Navbar />
+                <Games />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/notes"
+            element={
+              <>
+                <Navbar />
+                <Notes />
+                <Footer />
+              </>
+            }
+          />
           <Route
             path="/dashboard"
             element={

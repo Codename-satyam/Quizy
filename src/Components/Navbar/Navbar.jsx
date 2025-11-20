@@ -35,10 +35,14 @@ const Navbar = () => {
             <li><Link to="/login">Login</Link></li>
           </>
         ) : (
-          <li>
-            <a
-              href="#"
-              className="nav-logout"
+          <>
+            <li>
+              <span className="nav-user">Hello, {user.name}</span>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="nav-logout"
               onClick={(e) => {
                 e.preventDefault();
                 handleLogout();
@@ -49,6 +53,7 @@ const Navbar = () => {
               Logout
             </a>
           </li>
+          </>
         )}
       </ul>
     </nav>

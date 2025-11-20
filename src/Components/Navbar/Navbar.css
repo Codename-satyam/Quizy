@@ -27,13 +27,21 @@
 
 
 .logo {
-  font-size: 50px;
-  font-weight: 600;
+  font-size: 60px;
+  font-weight: 800;
   align-items: center;
+  color:#6fa7e7;
   gap: 10px;
+  animation: title-glow 1.5s infinite;
 }
+@keyframes title-glow {
+  0% { text-shadow: 0 0 4px #a020f0; }
+  50% { text-shadow: 0 0 14px #a020f0; }
+  100% { text-shadow: 0 0 4px #a020f0; }
+}
+
 .logo span {
-  color: #ff00ff;
+  color: #0062ff;
 }
 .navbar ul {
   list-style: none;

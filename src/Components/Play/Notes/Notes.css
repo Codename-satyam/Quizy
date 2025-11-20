@@ -1,0 +1,5 @@
+/* Simple placeholder styles for Notes page */
+.notes-page{padding:28px;display:flex;justify-content:center}
+.notes-container{max-width:900px;background:rgba(0,0,0,0.5);padding:20px;border-radius:10px;color:#fff}
+.notes-container h2{margin:0 0 8px}
+.notes-note{color:#cbd5e1}
