@@ -29,8 +29,8 @@
 }
 
 .pl-title {
-  font-size: 28px;
-  color: #a66bff; /* purple */
+  font-size:12vh;
+  color: #a66bff; 
   text-shadow: 0px 0px 10px #a020f0, 0px 0px 14px #a020f0;
   margin-bottom: 12px;
   animation: title-glow 1.5s infinite;
@@ -43,9 +43,11 @@
 }
 
 .pl-sub {
-  color: #8fbfff; /* light blue */
-  font-size: 12px;
+  color: #8fbfff;
+  font-size: 16px;
   text-shadow: 0px 0px 5px #3366ff;
+  max-width: 60%;
+  margin: 0 auto;
 }
 
 /* ---------- GRID ---------- */
